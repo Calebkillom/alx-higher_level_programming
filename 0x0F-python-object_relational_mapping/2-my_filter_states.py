@@ -9,7 +9,7 @@ if __name__ == "__main__":
     user_name = argv[1]
     pass_word = argv[2]
     db_name = argv[3]
-    name_search = argv[4]
+    state_name = argv[4]
 
     """
     connecting to the db
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     executing sql queries
     """
     thesql_query = "SELECT * FROM states WHERE name LIKE\
-        BINARY '{}'ORDER BY id ASC".format(name_search)
+        BINARY '{}'ORDER BY id ASC".format(state_name)
     cursor.execute(thesql_query)
 
     """
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     """
     result = cursor.fetchall()
     for value in result:
-        if value[1] == name_search:
+        if value[1] == state_name:
             print(value)
     """
     commiting changes and closing the connection
