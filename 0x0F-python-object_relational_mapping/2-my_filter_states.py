@@ -27,8 +27,8 @@ if __name__ == "__main__":
     """
     executing sql queries
     """
-    thesql_query = "SELECT * FROM states WHERE name LIKE\
-        BINARY '{}'ORDER BY id ASC".format(state_name)
+    thesql_query = "SELECT * FROM states WHERE name\
+        LIKE '{}'ORDER BY id ASC".format(state_name)
     cursor.execute(thesql_query)
 
     """
