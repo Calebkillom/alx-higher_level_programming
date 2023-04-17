@@ -27,16 +27,16 @@ if __name__ == "__main__":
     """
     executing sql queries
     """
-    thesql_query = "SELECT * FROM states WHERE name LIKE '%{}%'\
-        ORDER BY id ASC".format(state_name)
-    cursor.execute(thesql_query)
+    thesql_query = "SELECT * FROM states WHERE name=%s ORDER BY id ASC"
+    cursor.execute(thesql_query, (state_name,))
 
     """
     fetching all values from the result
     """
     result = cursor.fetchall()
     for value in result:
-        print(value)
+        if value[1] == state_name:
+            print(value)
     """
     commiting changes and closing the connection
     """
