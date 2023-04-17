@@ -36,8 +36,7 @@ if __name__ == "__main__":
     """
     result = cursor.fetchall()
     for value in result:
-        if value[1] == state_name:
-            print(value)
+        print(value)
     """
     commiting changes and closing the connection
     """
