@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+a script that takes in arguments and displays all values
+it is safe from MySQL injections!
+"""
+
 import MySQLdb
 from sys import argv
 
