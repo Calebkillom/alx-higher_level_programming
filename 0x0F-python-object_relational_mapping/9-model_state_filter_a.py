@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" script that prints the first State object from the database """
+""" script that lists all State objects containing the letter a """
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -22,13 +22,15 @@ if __name__ == "__main__":
     """ Creating a session """
     session = Session()
 
-    """ Querying the first State object """
-    state = session.query(State).order_by(State.id).first()
+    """
+    Querying all State objects that contain the letter 'a'
+    and sorting by id in ascending order
+    """
+    states = session.query(State).filter(State.name.like('%a%')
+                                         ).order_by(State.id).all()
 
-    """ Checking if state is None (empty table) """
-    if state is None:
-        print("Nothing")
-    else:
+    """ Displaying the Results """
+    for state in states:
         print(f"{state.id}: {state.name}")
 
     """ Closing the session """
