@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     """ Creating the SQLAlchemy engine to connect to the MySQL server """
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        mysql_username, mysql_password, mysql_db_name), pool_pre_ping=True)
+        mysql_username, mysql_password, database_name), pool_pre_ping=True)
 
     """ Create a session factory """
     Session = sessionmaker(bind=engine)
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     session = Session()
 
     """ Querying the State object with the given state name """
-    state = session.query(State).filter(State.name == state_name).first()
+    state = session.query(State).filter_by(name=state_name).first()
 
     """ Checking if the state is None/not found """
     if state is None:
