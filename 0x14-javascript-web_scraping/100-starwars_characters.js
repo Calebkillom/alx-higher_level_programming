@@ -31,7 +31,7 @@ request(apiUrl, (error, response, body) => {
   }
 
   // Function to fetch and print character names
-  function printCharacterName(characterUrl) {
+  function printCharacterName (characterUrl) {
     request(characterUrl, (err, res, characterBody) => {
       if (err) {
         console.error('Error:', err);
