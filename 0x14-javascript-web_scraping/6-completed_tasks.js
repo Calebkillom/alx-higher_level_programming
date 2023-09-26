@@ -6,12 +6,12 @@ const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
 request(apiUrl, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
+    console.error( error);
     return;
   }
 
   if (response.statusCode !== 200) {
-    console.error('API returned a non-200 status code:', response.statusCode);
+    console.error(response.statusCode);
     return;
   }
 
