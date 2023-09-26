@@ -6,12 +6,12 @@ const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
 request(apiUrl, (error, response, body) => {
   if (error) {
-    console.error( error);
+    console.error('Error:', error);
     return;
   }
 
   if (response.statusCode !== 200) {
-    console.error(response.statusCode);
+    console.error('API returned a non-200 status code:', response.statusCode);
     return;
   }
 
@@ -20,8 +20,7 @@ request(apiUrl, (error, response, body) => {
 
   todos.forEach((todo) => {
     if (todo.completed) {
-      const userId = todo.userId.toString();
-      completedTasksByUser[userId] = (completedTasksByUser[userId] || 0) + 1;
+      completedTasksByUser[todo.userId] = (completedTasksByUser[todo.userId] || 0) + 1;
     }
   });
 
