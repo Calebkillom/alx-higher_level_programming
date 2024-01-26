@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" returns a list with all values multiplied by a number without using loops """
+""" returns list with all values multiplied by a number"""
 
 
 def multiply_list_map(my_list=[], number=0):
-    """Returns a new list with all values multiplied by a number using map"""
+    """Returns a new list with all values multiplied using map """
     return list(map(lambda x: x * number, my_list))
