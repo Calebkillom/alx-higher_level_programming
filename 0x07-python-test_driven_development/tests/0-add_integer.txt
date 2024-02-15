@@ -46,4 +46,15 @@ This is an example text file in reStructuredText format.  First import
     Traceback (most recent call last):
     ...
     TypeError: b must be an integer or float
+
+	Testing both parameters as non-integer inputs
+    >>> add_integer("a", "b")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer or float
+
+    >>> add_integer("x", "y")
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer or float
 	
