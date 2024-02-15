@@ -6,17 +6,33 @@ Using ``add_integer``
 
 This is an example text file in reStructuredText format.  First import
 ``add_integer`` from the ``0-add_integer`` module:
-	>>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer = __import__('0-add_integer').add_integer
 
-	Testing positive integers
->>> print(add_integer(1, 2))
-3
-	Testing 1 positive, 1 negative integer
->>> print(add_integer(100, -2))
-98
-	Testing 1 parameter
->>> print(add_integer(2))
-100
-	Testing float and an int
->>> print(add_integer(100.3, -2))
-98
+    Testing positive integers
+    >>> print(add_integer(1, 2))
+    3
+
+    Testing 1 positive, 1 negative integer
+    >>> print(add_integer(100, -2))
+    98
+
+    Testing 1 parameter
+    >>> print(add_integer(2))
+    100
+
+    Testing float and an int
+    >>> print(add_integer(100.3, -2))
+    98
+
+    Testing two negative integers
+    >>> print(add_integer(-5, -10))
+    -15
+
+    Testing two large integers
+    >>> print(add_integer(1000000, 2000000))
+    3000000
+
+    Testing large integer and float
+    >>> print(add_integer(1000000, 0.5))
+    1000000
+	
