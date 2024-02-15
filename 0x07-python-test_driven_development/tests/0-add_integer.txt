@@ -35,4 +35,15 @@ This is an example text file in reStructuredText format.  First import
     Testing large integer and float
     >>> print(add_integer(1000000, 0.5))
     1000000
+
+	Testing non-integer inputs
+    >>> add_integer("a", 5)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer or float
+
+    >>> add_integer(2, "b")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer or float
 	
