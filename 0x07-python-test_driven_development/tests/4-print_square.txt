@@ -1,0 +1,52 @@
+"""
+The ``print_square`` module
+===========================
+
+Using ``print_square``
+-----------------------
+
+This is an example text file in reStructuredText format. First import
+``print_square`` from the ``4-print_square`` module:
+    >>> print_square = __import__('4-print_square').print_square
+
+Tests:
+~~~~~~
+
+Let's start by testing printing a square of size 4:
+    
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Next, let's test printing a square of size 10:
+    
+    >>> print_square(10)
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+    ##########
+
+Now, let's test printing a square of size 0:
+    
+    >>> print_square(0)
+    
+
+Then, let's test printing a square of size 1:
+    
+    >>> print_square(1)
+    #
+
+Finally, let's test printing a square of size -1:
+    
+    >>> print_square(-1)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be >= 0
