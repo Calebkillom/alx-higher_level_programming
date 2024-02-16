@@ -1,0 +1,49 @@
+The ``say_my_name`` module
+============================
+
+Using ``say_my_name``
+----------------------------
+
+This is an example text file in reStructuredText format.  First import
+``say_my_name`` from the ``3-say_my_name`` module:
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Tests:
+~~~~~~
+
+Let's start by testing when both first name and last name are provided:
+    
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+
+Now, let's test when only the first name is provided:
+
+    >>> say_my_name("Alice")
+    My name is Alice
+
+Next, we'll test the function with invalid inputs:
+
+    >>> say_my_name(123, "Smith")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Bob", 456)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(1)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name([], "Jones")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Jane", [])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
