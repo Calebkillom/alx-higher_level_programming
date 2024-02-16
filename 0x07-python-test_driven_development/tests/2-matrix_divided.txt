@@ -1,53 +1,78 @@
 The ``matrix_divided`` module
-======================
+=============================
 
 Using ``matrix_divided``
--------------------
+-------------------------
 
-This is an example text file in reStructuredText format.  First import
+This is an example text file in reStructuredText format. First import
 ``matrix_divided`` from the ``2-matrix_divided`` module:
 	matrix_divided = __import__('2-matrix_divided').matrix_divided
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 0))
- division by zero
+Tests:
+~~~~~~
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 2.5))
-[[0.4, 0.8, 1.2], [1.6, 2.0, 2.4]]
+Let's start by testing division by zero:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 0))
+    division by zero
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 'string'))
- div must be a number
+Next, let's test division by a float:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 2.5))
+    [[0.4, 0.8, 1.2], [1.6, 2.0, 2.4]]
 
->>> matrix = [[1, 2, 3], [4, 5, 6, 7]]
->>> print(matrix_divided(matrix, 3))
- Each row of the matrix must have the same size
+Now, let's test division by a string:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 'string'))
+    div must be a number
 
->>> matrix = [[1, 'string', 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 3))
-  matrix must be a matrix (list of lists)of integers/floats
+Then, let's test when each row of the matrix has different sizes:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6, 7]]
+    >>> print(matrix_divided(matrix, 3))
+    Each row of the matrix must have the same size
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 3))
-[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+Now, let's test when the matrix contains non-numeric values:
+    
+    >>> matrix = [[1, 'string', 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 3))
+    matrix must be a matrix (list of lists) of integers/floats
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, -3))
-[[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
+Next, let's test division by a positive integer:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
->>> matrix = [[1, 2, 3], [4, 5, 6]]
->>> print(matrix_divided(matrix, 1))
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+Then, let's test division by a negative integer:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, -3))
+    [[-0.33, -0.67, -1.0], [-1.33, -1.67, -2.0]]
 
->>> matrix = [[0, 0, 0], [0, 0, 0]]
->>> print(matrix_divided(matrix, 5))
-[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+Now, let's test division by 1:
+    
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, 1))
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
 
->>> matrix = [[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]]
->>> print(matrix_divided(matrix, 2))
-[[0.75, 1.25, 1.75], [2.25, 2.75, 3.25]]
+Next, let's test division by 5 on a matrix of zeros:
+    
+    >>> matrix = [[0, 0, 0], [0, 0, 0]]
+    >>> print(matrix_divided(matrix, 5))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
->>> matrix = [[-1, -2, -3], [-4, -5, -6]]
->>> print(matrix_divided(matrix, -1))
-[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+Then, let's test division by 2 on a matrix of floats:
+    
+    >>> matrix = [[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]]
+    >>> print(matrix_divided(matrix, 2))
+    [[0.75, 1.25, 1.75], [2.25, 2.75, 3.25]]
+
+Finally, let's test division by -1 on a matrix of negative integers:
+    
+    >>> matrix = [[-1, -2, -3], [-4, -5, -6]]
+    >>> print(matrix_divided(matrix, -1))
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
