@@ -73,4 +73,4 @@ TypeError: integer_validator() missing 2 required positional arguments: 'name' a
 ...     geometry.integer_validator("Hello", 12, 14)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-TypeError: integer_validator() takes 3 positional arguments but 4 were given
+TypeError: integer_validator() takes 2 positional arguments but 4 were given
