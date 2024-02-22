@@ -1,0 +1,76 @@
+# Import the module
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Create class instance
+>>> geometry = BaseGeometry()
+
+# Test different data types
+>>> geometry.integer_validator("size", (8,))
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> geometry.integer_validator("size", [10])
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> geometry.integer_validator("size", False)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> geometry.integer_validator("size", {5, 6})
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+>>> geometry.integer_validator("size", None)
+Traceback (most recent call last):
+TypeError: size must be an integer
+
+# Check that you can pass in a string and int without raising an error
+>>> geometry.integer_validator("length", 15)
+
+# Check that passing in two strings throws a TypeError
+>>> try:
+...     geometry.integer_validator("name", "Alice")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] name must be an integer
+
+# Check that passing in value equal to 0 throws a ValueError
+>>> try:
+...     geometry.integer_validator("height", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] height must be greater than 0
+
+# Check that passing in value less than 0 throws a ValueError
+>>> try:
+...     geometry.integer_validator("width", -7)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] width must be greater than 0
+
+# Check that call to area method raises an Exception
+>>> geometry.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+# Check that missing one argument doesn't execute
+>>> try:
+...     geometry.integer_validator("size")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+# Check that missing two arguments doesn't execute
+>>> try:
+...     geometry.integer_validator()
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+# Check that extra arguments don't execute
+>>> try:
+...     geometry.integer_validator("Hello", 12, 14)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
